@@ -9,7 +9,7 @@ TestManager::TestManager(std::mt19937& rng)
 void TestManager::start(NonOwningFlashcards flashcards)
 {
     currentFlashcardIdx = 0;
-    this->flashcards = flashcards;
+    this->flashcards = shuffled(flashcards, rng);
 }
 
 Flashcard& TestManager::currentFlashcard()
