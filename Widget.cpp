@@ -155,14 +155,7 @@ void Widget::goToDoYouRememberQuestion()
 {
     ui->TestQuestion->setCurrentWidget(ui->WordToMeaningDoYouRemember);
     setYesNoLayout();
-
-    const auto currentFlashcard = testManager.currentFlashcard();
-    if (isWordToMeaningTest())
-        ui->TestInformation->setPlainText(currentFlashcard.word);
-    else if (isMeaningToWordTest())
-        ui->TestInformation->setPlainText(currentFlashcard.meaning);
-    else
-        invalidState();
+    ui->TestInformation->setPlainText(getDoYouRememberInformation());
 }
 
 void Widget::goToDidYouRememberQuestion()
@@ -177,6 +170,17 @@ void Widget::goToTryToRememberQuestion()
     ui->TestQuestion->setCurrentWidget(ui->TryToRemember);
     setOkLayout();
     ui->TestInformation->document()->setHtml(testManager.currentFlashcard().formatted());
+}
+
+QString Widget::getDoYouRememberInformation() const
+{
+    const auto& currentFlashcard = testManager.currentFlashcard();
+
+    if (isWordToMeaningTest())
+        return currentFlashcard.word;
+    if (isMeaningToWordTest())
+        return currentFlashcard.meaning;
+    invalidState();
 }
 
 void Widget::setYesNoLayout()
@@ -194,8 +198,8 @@ bool Widget::isDidYouRememberQuestion() const
 bool Widget::isTryToRememberQuestion() const
 { return ui->TestQuestion->currentWidget() == ui->TryToRemember; }
 
-void Widget::invalidState()
-{ assert(!"Invalid state"); }
+void Widget::invalidState() const
+{ throw "Invalid state"; }
 
 void Widget::flashcardsUpdated()
 {

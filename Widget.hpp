@@ -46,10 +46,11 @@ private:
     bool isDidYouRememberQuestion() const;
     bool isTryToRememberQuestion() const;
 
+    QString getDoYouRememberInformation() const;
     void setYesNoLayout();
     void setOkLayout();
 
-    void invalidState();
+    Q_NORETURN void invalidState() const;
 
     Ui::Widget* ui;
 

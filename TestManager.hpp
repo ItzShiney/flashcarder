@@ -11,6 +11,7 @@ public:
     void start(NonOwningFlashcards);
 
     Flashcard& currentFlashcard();
+    const Flashcard& currentFlashcard() const;
 
     bool hasNext() const;
     void skipFlashcard();

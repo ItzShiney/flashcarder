@@ -15,6 +15,9 @@ void TestManager::start(NonOwningFlashcards flashcards)
 Flashcard& TestManager::currentFlashcard()
 { return *flashcards.at(currentFlashcardIdx); }
 
+const Flashcard& TestManager::currentFlashcard() const
+{ return *flashcards.at(currentFlashcardIdx); }
+
 bool TestManager::hasNext() const
 { return currentFlashcardIdx < flashcards.size(); }
 
