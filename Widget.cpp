@@ -155,7 +155,14 @@ void Widget::goToDoYouRememberQuestion()
 {
     ui->TestQuestion->setCurrentWidget(ui->WordToMeaningDoYouRemember);
     setYesNoLayout();
-    ui->TestInformation->setPlainText(testManager.currentFlashcard().word);
+
+    const auto currentFlashcard = testManager.currentFlashcard();
+    if (isWordToMeaningTest())
+        ui->TestInformation->setPlainText(currentFlashcard.word);
+    else if (isMeaningToWordTest())
+        ui->TestInformation->setPlainText(currentFlashcard.meaning);
+    else
+        invalidState();
 }
 
 void Widget::goToDidYouRememberQuestion()
