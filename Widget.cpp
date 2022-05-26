@@ -104,6 +104,12 @@ bool Widget::isFullTest() const
 bool Widget::isQuickTest() const
 { return ui->QuickTestRadioButton->isChecked(); }
 
+bool Widget::isWordToMeaningTest() const
+{ return ui->WordToMeaningRadioButton->isChecked(); }
+
+bool Widget::isMeaningToWordTest() const
+{ return ui->MeaningToWordRadioButton->isChecked(); }
+
 void Widget::goToTestStartLayout()
 { ui->TestPages->setCurrentWidget(ui->TestStartLayout); }
 

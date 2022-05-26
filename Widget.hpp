@@ -33,6 +33,9 @@ private:
 
     bool isFullTest() const;
     bool isQuickTest() const;
+    bool isWordToMeaningTest() const;
+    bool isMeaningToWordTest() const;
+
     void goToTestStartLayout();
     void startTest();
     void nextFlashcard();
